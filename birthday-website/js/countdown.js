@@ -1,5 +1,5 @@
 (function () {
-  const birthdayMonth = 5;
+  const birthdayMonth = 6;
   const birthdayDay = 27;
 
   function getNextBirthday() {

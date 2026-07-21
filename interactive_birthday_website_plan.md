@@ -4,7 +4,7 @@
 
 Create a beautiful, romantic, and interactive birthday website for my girlfriend.
 
-Her birthday is **27 June 2003**.
+Her birthday is **27 July 2003**.
 
 The website should feel sweet, playful, personal, and memorable. It should include animated photos, small interactive surprises, a mini-game, birthday wishes, and smooth transitions.
 
@@ -58,7 +58,7 @@ background: linear-gradient(
 
 The first screen should contain:
 
-- A birthday countdown before 27 June
+- A birthday countdown before 27 July
 - A birthday message after the date arrives
 - Her name or nickname
 - An animated gift box
@@ -372,7 +372,7 @@ Our first date
 [DATE]
 A special memory
 
-27 June
+27 July
 Celebrating the birthday of my favourite person
 ```
 
@@ -651,7 +651,7 @@ Personal birthday message:
 
 Use the following prompt when asking an AI coding assistant to build the website:
 
-> Build a complete, responsive, and interactive birthday website for my girlfriend, whose birthday is on 27 June 2003. Use baby blue as the main colour and combine it with soft lavender, blush pink, white, navy blue, and small gold accents. The website should be romantic, elegant, cute, and modern.
+> Build a complete, responsive, and interactive birthday website for my girlfriend, whose birthday is on 27 July 2003. Use baby blue as the main colour and combine it with soft lavender, blush pink, white, navy blue, and small gold accents. The website should be romantic, elegant, cute, and modern.
 >
 > Include an opening gift-box animation, birthday countdown, music controls, animated photo gallery, click-to-reveal love messages, a Catch the Hearts mini-game, an interactive birthday cake, a digital birthday letter, a relationship timeline, hidden Easter eggs, confetti, floating hearts, scroll animations, and a final surprise section.
 >

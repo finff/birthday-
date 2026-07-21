@@ -181,7 +181,7 @@
 
     document.getElementById("secretDate")?.addEventListener("input", (event) => {
       const normalized = event.target.value.trim().replaceAll("-", "/");
-      if (normalized === "27/06" || normalized === "27/6") {
+      if (normalized === "27/07" || normalized === "27/7") {
         showSecret("date");
       }
     });
