@@ -4,7 +4,7 @@
 
 Build a beautiful, interactive, mobile-friendly birthday website for my girlfriend.
 
-Birthday date: **27 July 2003**
+Birthday date: **21 July 2003**
 
 Main style:
 
@@ -125,7 +125,7 @@ Open Your Birthday Surprise
 
 # Phase 4: Birthday Countdown
 
-- [ ] Add countdown to 27 July
+- [ ] Add countdown to 21 July
 - [ ] Display days
 - [ ] Display hours
 - [ ] Display minutes
