@@ -1056,6 +1056,16 @@ time {
 }
 
 @media (max-width: 680px) {
+  .opening-screen {
+    align-items: start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .opening-panel {
+    margin-block: 1rem;
+  }
+
   .countdown,
   .game-status,
   .gallery-grid,
