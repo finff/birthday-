@@ -112,7 +112,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 1rem;
-      min-height: 112px;
+      min-height: 190px;
       margin-top: 1.6rem;
     }
 
@@ -137,6 +137,7 @@
       position: absolute;
       left: var(--x, 50%);
       top: var(--y, 50%);
+      transition: left 0.22s ease, top 0.22s ease, transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .hint {
@@ -230,7 +231,7 @@
       }
 
       .actions {
-        min-height: 150px;
+        min-height: 240px;
       }
     }
 
@@ -336,11 +337,27 @@
     function moveNoButton() {
       const bounds = actions.getBoundingClientRect();
       const buttonBounds = noButton.getBoundingClientRect();
+      const yesBounds = yesButton.getBoundingClientRect();
       const maxX = Math.max(0, bounds.width - buttonBounds.width);
       const maxY = Math.max(0, bounds.height - buttonBounds.height);
+      const yesCenterX = yesBounds.left - bounds.left + yesBounds.width / 2;
+      const yesCenterY = yesBounds.top - bounds.top + yesBounds.height / 2;
+      const minimumDistance = Math.min(bounds.width * 0.32, 230);
+      let x = 0;
+      let y = 0;
+
+      for (let attempt = 0; attempt < 20; attempt += 1) {
+        x = Math.random() * maxX;
+        y = Math.random() * maxY;
+        const noCenterX = x + buttonBounds.width / 2;
+        const noCenterY = y + buttonBounds.height / 2;
+        const distance = Math.hypot(noCenterX - yesCenterX, noCenterY - yesCenterY);
+        if (distance >= minimumDistance) break;
+      }
+
       noButton.classList.add("runaway");
-      noButton.style.setProperty("--x", `${Math.random() * maxX}px`);
-      noButton.style.setProperty("--y", `${Math.random() * maxY}px`);
+      noButton.style.setProperty("--x", `${x}px`);
+      noButton.style.setProperty("--y", `${y}px`);
     }
 
     function dodgeNo() {
