@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A private interactive birthday surprise website.">
+  <title>Birthday Surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to birthday surprise</a>
+
+  <section class="opening-screen" id="openingScreen" aria-label="Opening birthday surprise">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <button class="secret-star" type="button" aria-label="Hidden star surprise" data-secret="star"></button>
+
+    <div class="opening-panel reveal">
+      <p class="script-label">For <span data-placeholder="Her nickname">Sayang</span></p>
+      <h1>A little surprise was made especially for you.</h1>
+      <p class="countdown-label" id="countdownLabel">Counting down to 27 June</p>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <span><strong id="days">00</strong>Days</span>
+        <span><strong id="hours">00</strong>Hours</span>
+        <span><strong id="minutes">00</strong>Minutes</span>
+        <span><strong id="seconds">00</strong>Seconds</span>
+      </div>
+
+      <div class="gift-box" id="giftBox" aria-hidden="true">
+        <div class="gift-lid"></div>
+        <div class="gift-bow"></div>
+        <div class="gift-body"></div>
+      </div>
+
+      <button class="primary-button ripple" type="button" id="openSurprise">Open Your Birthday Surprise</button>
+    </div>
+  </section>
+
+  <main id="main" class="site-shell hidden" tabindex="-1">
+    <div class="floating-layer" aria-hidden="true">
+      <span class="float-heart"></span>
+      <span class="float-heart"></span>
+      <span class="float-heart"></span>
+      <span class="cloud"></span>
+      <span class="cloud small"></span>
+    </div>
+
+    <section class="hero-section panel-band" id="hero">
+      <div class="hero-copy reveal">
+        <p class="script-label">Happy Birthday, My Love</p>
+        <h2>Happy Birthday to My Favourite Person</h2>
+        <p>Today is all about celebrating the beautiful person who makes my days brighter, my heart happier, and my life so much more meaningful.</p>
+        <button class="primary-button ripple" type="button" data-scroll="#memories">Start Your Birthday Adventure</button>
+      </div>
+      <!-- Replace this hero placeholder with assets/images/hero-photo.jpg when you have her favourite photo. -->
+      <figure class="hero-photo reveal">
+        <div class="photo-placeholder" role="img" aria-label="Replace this with her favourite birthday photo">
+          <span>Replace with favourite photo</span>
+        </div>
+        <figcaption>Favourite photo placeholder</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="memories">
+      <div class="section-heading reveal">
+        <p class="script-label">Our Memories</p>
+        <h2>Little moments I keep close</h2>
+      </div>
+      <div class="gallery-grid">
+        <!-- Replace memory placeholders with real photos, dates, titles, and captions. -->
+        <article class="memory-card reveal" data-gallery="0" tabindex="0">
+          <div class="memory-photo memory-one" role="img" aria-label="Memory photo placeholder one"></div>
+          <h3>Memory title</h3>
+          <p class="date">Date to add</p>
+          <p>The day you made me smile without even trying.</p>
+        </article>
+        <article class="memory-card reveal" data-gallery="1" tabindex="0">
+          <div class="memory-photo memory-two" role="img" aria-label="Memory photo placeholder two"></div>
+          <h3>Memory title</h3>
+          <p class="date">Date to add</p>
+          <p>One of my favourite moments with you.</p>
+        </article>
+        <article class="memory-card reveal" data-gallery="2" tabindex="0">
+          <div class="memory-photo memory-three" role="img" aria-label="Memory photo placeholder three"></div>
+          <h3>Memory title</h3>
+          <p class="date">Date to add</p>
+          <p>A memory I will always keep close to my heart.</p>
+        </article>
+        <article class="memory-card reveal" data-gallery="3" tabindex="0">
+          <div class="memory-photo memory-four" role="img" aria-label="Memory photo placeholder four"></div>
+          <h3>Memory title</h3>
+          <p class="date">Date to add</p>
+          <p>Every picture with you has its own beautiful story.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section soft-band" id="loveCards">
+      <div class="section-heading reveal">
+        <p class="script-label">Things I Love About You</p>
+        <h2>Tap a card to open it</h2>
+      </div>
+      <div class="love-grid">
+        <button class="love-card reveal" type="button"><span>Your Smile</span><small>Your smile makes even the most ordinary day feel special.</small></button>
+        <button class="love-card reveal" type="button"><span>Your Kind Heart</span><small>I love how caring, thoughtful, and sincere you are.</small></button>
+        <button class="love-card reveal" type="button"><span>Your Laugh</span><small>Your laugh is one of my favourite sounds.</small></button>
+        <button class="love-card reveal" type="button"><span>Your Strength</span><small>I admire how strong you are, even when things are difficult.</small></button>
+        <button class="love-card reveal" type="button"><span>The Way You Care</span><small>Thank you for listening and being there when I need you.</small></button>
+        <button class="love-card reveal" type="button"><span>The Happiness You Bring Me</span><small>Since you came into my life, so many moments feel brighter.</small></button>
+      </div>
+    </section>
+
+    <section class="section" id="catchGame">
+      <div class="section-heading reveal">
+        <p class="script-label">Mini Game</p>
+        <h2>Catch My Love</h2>
+        <p>Catch hearts before they disappear. Golden hearts are worth more. Broken hearts reduce your score.</p>
+      </div>
+      <div class="game-shell reveal">
+        <div class="game-status">
+          <span>Score: <strong id="score">0</strong></span>
+          <span>Time: <strong id="timeLeft">25</strong>s</span>
+          <span>Best: <strong id="highScore">0</strong></span>
+        </div>
+        <div class="game-area" id="gameArea" aria-label="Catch hearts game area"></div>
+        <div class="game-actions">
+          <button class="secondary-button ripple" type="button" id="startGame">Start Game</button>
+          <button class="secondary-button ripple" type="button" id="replayGame">Replay</button>
+        </div>
+        <div class="reward hidden" id="gameReward">
+          <p id="resultMessage"></p>
+          <div class="reward-photo" role="img" aria-label="Hidden birthday reward photo placeholder">Hidden photo placeholder</div>
+          <button class="primary-button ripple" type="button" data-scroll="#letter">Claim Your Birthday Reward</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-band" id="matchGame">
+      <div class="section-heading reveal">
+        <p class="script-label">Memory Match</p>
+        <h2>Find every pair</h2>
+      </div>
+      <div class="match-shell reveal">
+        <div class="game-status">
+          <span>Moves: <strong id="matchMoves">0</strong></span>
+          <span>Time: <strong id="matchTime">0</strong>s</span>
+        </div>
+        <div class="match-board" id="matchBoard"></div>
+        <p class="completion-message hidden" id="matchComplete">You matched every memory, just like how perfectly you match with me.</p>
+        <button class="secondary-button ripple" type="button" id="restartMatch">Restart Match</button>
+      </div>
+    </section>
+
+    <section class="section" id="letter">
+      <div class="section-heading reveal">
+        <p class="script-label">Birthday Letter</p>
+        <h2>A letter for you</h2>
+      </div>
+      <div class="letter-stage reveal">
+        <button class="envelope" type="button" id="openLetter" aria-label="Open birthday letter">
+          <span class="envelope-flap"></span>
+          <span class="envelope-body"></span>
+          <span class="letter-peek">Open</span>
+        </button>
+        <article class="letter-paper hidden" id="letterPaper">
+          <button class="close-button" type="button" id="closeLetter" aria-label="Close letter">x</button>
+          <p>My love,</p>
+          <p>Happy Birthday to the most beautiful and special person in my life.</p>
+          <p>I hope today reminds you of how loved, appreciated, and important you truly are. Thank you for bringing happiness, comfort, and so many beautiful memories into my life.</p>
+          <p>I may not always have the perfect words to explain how much you mean to me, but I hope this little website shows how much thought and love I wanted to put into celebrating you.</p>
+          <p>Terima kasih sebab sentiasa ada dengan saya, sabar dengan saya, dan menjadi seseorang yang sangat istimewa dalam hidup saya. Saya sangat bersyukur dapat kenal dan sayang awak.</p>
+          <p>Happy Birthday, sayang.</p>
+          <!-- Replace Your name with your real name before sharing. -->
+          <p class="signature">With all my love,<br><span data-placeholder="Your name">Your name</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section soft-band" id="typing">
+      <div class="section-heading reveal">
+        <p class="script-label">Little Messages</p>
+        <h2><span id="typingText"></span><span class="cursor" aria-hidden="true"></span></h2>
+      </div>
+    </section>
+
+    <section class="section" id="wishes">
+      <div class="wish-card reveal">
+        <p class="script-label">Birthday Wishes</p>
+        <p>Happy Birthday, sayang. I hope this year brings you more happiness, more beautiful memories, and more opportunities to achieve everything you dream of.</p>
+        <p>Selamat hari lahir, sayang. Semoga umur baru ini membawa lebih banyak kebahagiaan, rezeki, kejayaan, dan ketenangan dalam hidup awak.</p>
+      </div>
+    </section>
+
+    <section class="section soft-band" id="cake">
+      <div class="section-heading reveal">
+        <p class="script-label">Make A Wish</p>
+        <h2>Birthday Cake</h2>
+      </div>
+      <div class="cake-stage reveal">
+        <div class="cake" id="cakeVisual" aria-label="Virtual birthday cake" role="img">
+          <span class="candle"><i></i></span>
+          <span class="candle"><i></i></span>
+          <span class="candle"><i></i></span>
+          <div class="cake-top"></div>
+          <div class="cake-layer"></div>
+          <div class="cake-base"></div>
+        </div>
+        <button class="primary-button ripple" type="button" id="blowCandles">Make a Wish and Blow the Candles</button>
+        <p class="hidden" id="cakeWish">I hope every wish you make today finds its way to you.</p>
+      </div>
+    </section>
+
+    <section class="section" id="timeline">
+      <div class="section-heading reveal">
+        <p class="script-label">Our Timeline</p>
+        <h2>Important dates to personalize</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item reveal"><time>[DATE]</time><h3>The day we first met</h3><p>Add the story here.</p></article>
+        <article class="timeline-item reveal"><time>[DATE]</time><h3>Our first conversation</h3><p>Add the memory here.</p></article>
+        <article class="timeline-item reveal"><time>[DATE]</time><h3>Our first photo together</h3><p>Add the memory here.</p></article>
+        <article class="timeline-item reveal"><time>[DATE]</time><h3>Our first date</h3><p>Add the memory here.</p></article>
+        <article class="timeline-item reveal"><time>27 June</time><h3>Celebrating my favourite person</h3><p>A birthday that deserves every soft, sweet moment.</p></article>
+      </div>
+    </section>
+
+    <section class="section soft-band" id="easterEggs">
+      <div class="section-heading reveal">
+        <p class="script-label">Tiny Secrets</p>
+        <h2>Hidden surprises</h2>
+      </div>
+      <div class="secret-row reveal">
+        <button class="secret-heart" type="button" data-secret="heart" aria-label="Hidden heart surprise"></button>
+        <label class="date-unlock">Special date
+          <input id="secretDate" type="text" placeholder="DD/MM" aria-label="Enter a special date">
+        </label>
+        <button class="butterfly" type="button" data-secret="butterfly" aria-label="Blue butterfly surprise"></button>
+      </div>
+      <p class="secret-message hidden" id="secretMessage">You found a hidden message! Loving you is filled with beautiful moments waiting to be discovered.</p>
+    </section>
+
+    <section class="section final-section" id="final">
+      <div class="final-card reveal">
+        <p class="script-label">Final Surprise</p>
+        <h2>One Last Surprise</h2>
+        <button class="primary-button ripple" type="button" id="lastSurprise">One Last Surprise</button>
+        <div class="final-reveal hidden" id="finalReveal">
+          <div class="big-heart" aria-hidden="true"></div>
+          <p>Out of all the people in the world, I am grateful that life allowed me to meet you.</p>
+          <p>Happy Birthday, my love. You will always have a special place in my heart.</p>
+          <button class="secondary-button ripple" type="button" id="loveButton">I Love You</button>
+          <p class="hidden" id="loveMessage">I love you more than this website could ever explain.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="music-controls" aria-label="Music controls">
+    <!-- Add your chosen song at assets/music/our-song.mp3. Music starts only after a click. -->
+    <audio id="bgMusic" loop preload="none">
+      <source src="assets/music/our-song.mp3" type="audio/mpeg">
+      Your browser cannot play the birthday song.
+    </audio>
+    <span>Play Our Song</span>
+    <button type="button" id="playMusic" aria-label="Play music">Play</button>
+    <button type="button" id="pauseMusic" aria-label="Pause music">Pause</button>
+    <button type="button" id="muteMusic" aria-label="Mute music">Mute</button>
+    <button type="button" id="motionToggle" aria-label="Toggle reduced motion">Motion</button>
+    <input id="volumeMusic" type="range" min="0" max="1" step="0.05" value="0.45" aria-label="Music volume">
+  </aside>
+
+  <div class="modal hidden" id="galleryModal" role="dialog" aria-modal="true" aria-label="Enlarged memory photo">
+    <button class="close-button" type="button" id="closeModal" aria-label="Close image">x</button>
+    <button class="modal-nav" type="button" id="prevPhoto" aria-label="Previous photo">Prev</button>
+    <div class="modal-photo" id="modalPhoto" role="img" aria-label="Selected memory photo placeholder"></div>
+    <button class="modal-nav" type="button" id="nextPhoto" aria-label="Next photo">Next</button>
+  </div>
+
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/countdown.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
