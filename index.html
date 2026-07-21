@@ -3,14 +3,401 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=birthday-website/">
-  <title>Birthday Surprise</title>
-  <script>
-    window.location.replace("birthday-website/");
-  </script>
+  <meta name="description" content="A playful love question before the birthday surprise.">
+  <title>Do You Love Me?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blush-top: #fff1f6;
+      --blush-bottom: #bde0fe;
+      --card: rgba(255, 255, 255, 0.9);
+      --yes-from: #ffc8dd;
+      --yes-to: #f6d58a;
+      --no: #e7edf7;
+      --no-text: #52617f;
+      --heading: #2d3a5a;
+      --body: #5d6684;
+      --shadow: 0 22px 60px rgba(45, 58, 90, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100svh;
+      color: var(--body);
+      font-family: "Quicksand", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--blush-top), var(--blush-bottom));
+      overflow-x: hidden;
+    }
+
+    button {
+      min-height: 48px;
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #f6d58a;
+      outline-offset: 4px;
+    }
+
+    .screen {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      padding: clamp(1rem, 4vw, 2.5rem);
+      overflow: hidden;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 680px);
+      padding: clamp(1.3rem, 5vw, 3rem);
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      backdrop-filter: blur(16px);
+    }
+
+    .mood {
+      display: grid;
+      place-items: center;
+      width: min(68vw, 210px);
+      aspect-ratio: 1;
+      margin: 0 auto 1.2rem;
+      background: linear-gradient(135deg, #ffc8dd, #bde0fe);
+      border: 8px solid rgba(255, 255, 255, 0.72);
+      border-radius: 50%;
+      box-shadow: 0 15px 35px rgba(255, 143, 171, 0.22);
+      font-size: clamp(3.2rem, 13vw, 5.5rem);
+      line-height: 1;
+      user-select: none;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--heading);
+      font-family: "Fredoka", Arial, sans-serif;
+      font-size: clamp(2rem, 8vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0.8rem auto 0;
+      max-width: 520px;
+      font-size: clamp(1rem, 3.2vw, 1.25rem);
+      line-height: 1.65;
+      font-weight: 600;
+    }
+
+    .actions {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      min-height: 112px;
+      margin-top: 1.6rem;
+    }
+
+    .yes-button {
+      padding: 0.9rem 1.6rem;
+      color: var(--heading);
+      background: linear-gradient(135deg, var(--yes-from), var(--yes-to));
+      box-shadow: 0 16px 32px rgba(255, 143, 171, 0.28);
+      transform: scale(var(--yes-scale, 1));
+      transform-origin: center;
+    }
+
+    .no-button {
+      position: relative;
+      padding: 0.85rem 1.35rem;
+      color: var(--no-text);
+      background: var(--no);
+      box-shadow: 0 12px 24px rgba(45, 58, 90, 0.12);
+    }
+
+    .no-button.runaway {
+      position: absolute;
+      left: var(--x, 50%);
+      top: var(--y, 50%);
+    }
+
+    .hint {
+      min-height: 1.7em;
+      color: #915b8e;
+      font-size: 0.98rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .heart {
+      position: fixed;
+      z-index: 0;
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      opacity: 0.55;
+      animation: floatUp 8s linear infinite;
+    }
+
+    .heart::before {
+      content: "♥";
+      color: #ff8fab;
+      font-size: 24px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1rem;
+      z-index: 3;
+      width: min(92vw, 520px);
+      padding: 0.9rem 1rem;
+      color: var(--heading);
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      transform: translateX(-50%);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(110vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(-20vh) rotate(220deg);
+      }
+    }
+
+    @keyframes pop {
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      top: -12px;
+      z-index: 4;
+      width: 9px;
+      height: 14px;
+      border-radius: 2px;
+      pointer-events: none;
+      animation: fall 1.8s ease-in forwards;
+    }
+
+    .celebrate .mood {
+      animation: pop 0.7s ease infinite;
+    }
+
+    @media (max-width: 560px) {
+      .screen {
+        align-items: start;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .card {
+        margin-block: 1rem;
+      }
+
+      .actions {
+        min-height: 150px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>Opening the birthday surprise...</p>
-  <p><a href="birthday-website/">Continue to the website</a></p>
+  <main class="screen" id="screen">
+    <section class="card" aria-live="polite">
+      <div class="mood" id="mood" role="img" aria-label="Cute hopeful face">♡</div>
+      <h1 id="headline">Do you love me?</h1>
+      <p id="message">Answer carefully. The birthday surprise is waiting after this.</p>
+      <div class="actions" id="actions">
+        <button class="yes-button" type="button" id="yesButton">Yes, of course</button>
+        <button class="no-button" type="button" id="noButton">No</button>
+      </div>
+      <p class="hint" id="hint"></p>
+    </section>
+  </main>
+  <div class="toast hidden" id="toast"></div>
+
+  <script>
+    const CONFIG = {
+      question: "Do you love me?",
+      yesLabel: "Yes, of course",
+      nextUrl: "birthday-website/",
+      dodgesBeforeRelent: 5,
+      yesGrowthPerDodge: 1.22,
+      yesMaxScale: 2.2,
+      noButtonLabels: [
+        "Are you sure?",
+        "Think again",
+        "Really?",
+        "Last chance",
+        "Okay fine"
+      ],
+      yesScreen: {
+        heading: "I knew it.",
+        body: "Now your birthday surprise can begin."
+      },
+      guiltScreen: {
+        heading: "That answer is not accepted.",
+        body: "Try again, but this time choose with your heart.",
+        button: "Okay fine, YES"
+      }
+    };
+
+    const state = {
+      dodges: 0,
+      yesScale: 1
+    };
+
+    const screen = document.getElementById("screen");
+    const mood = document.getElementById("mood");
+    const headline = document.getElementById("headline");
+    const message = document.getElementById("message");
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+    const actions = document.getElementById("actions");
+    const hint = document.getElementById("hint");
+    const toast = document.getElementById("toast");
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.remove("hidden");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.add("hidden"), 1800);
+    }
+
+    function confetti(amount = 80) {
+      const colors = ["#BDE0FE", "#CDB4DB", "#FFC8DD", "#F6D58A", "#C9F2E5"];
+      for (let index = 0; index < amount; index += 1) {
+        const piece = document.createElement("span");
+        piece.className = "confetti";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.background = colors[index % colors.length];
+        piece.style.animationDelay = `${Math.random() * 0.35}s`;
+        document.body.appendChild(piece);
+        piece.addEventListener("animationend", () => piece.remove());
+      }
+    }
+
+    function addFloatingHearts() {
+      for (let index = 0; index < 18; index += 1) {
+        const heart = document.createElement("span");
+        heart.className = "heart";
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDelay = `${Math.random() * 8}s`;
+        heart.style.animationDuration = `${7 + Math.random() * 6}s`;
+        document.body.appendChild(heart);
+      }
+    }
+
+    function moveNoButton() {
+      const bounds = actions.getBoundingClientRect();
+      const buttonBounds = noButton.getBoundingClientRect();
+      const maxX = Math.max(0, bounds.width - buttonBounds.width);
+      const maxY = Math.max(0, bounds.height - buttonBounds.height);
+      noButton.classList.add("runaway");
+      noButton.style.setProperty("--x", `${Math.random() * maxX}px`);
+      noButton.style.setProperty("--y", `${Math.random() * maxY}px`);
+    }
+
+    function dodgeNo() {
+      if (state.dodges >= CONFIG.dodgesBeforeRelent) {
+        showGuilt();
+        return;
+      }
+
+      state.dodges += 1;
+      state.yesScale = Math.min(CONFIG.yesMaxScale, state.yesScale * CONFIG.yesGrowthPerDodge);
+      yesButton.style.setProperty("--yes-scale", state.yesScale);
+      noButton.textContent = CONFIG.noButtonLabels[state.dodges - 1] || "No";
+      hint.textContent = "The Yes button is getting stronger.";
+      mood.textContent = "♡";
+      moveNoButton();
+    }
+
+    function showGuilt() {
+      headline.textContent = CONFIG.guiltScreen.heading;
+      message.textContent = CONFIG.guiltScreen.body;
+      mood.textContent = ":'(";
+      noButton.classList.add("hidden");
+      yesButton.textContent = CONFIG.guiltScreen.button;
+      yesButton.style.setProperty("--yes-scale", 1.15);
+      hint.textContent = "";
+    }
+
+    function goToSurprise() {
+      screen.classList.add("celebrate");
+      headline.textContent = CONFIG.yesScreen.heading;
+      message.textContent = CONFIG.yesScreen.body;
+      mood.textContent = "♥";
+      noButton.classList.add("hidden");
+      yesButton.textContent = "Open Birthday Surprise";
+      yesButton.disabled = true;
+      confetti(120);
+      window.setTimeout(() => {
+        window.location.href = CONFIG.nextUrl;
+      }, 1300);
+    }
+
+    headline.textContent = CONFIG.question;
+    yesButton.textContent = CONFIG.yesLabel;
+    addFloatingHearts();
+
+    yesButton.addEventListener("click", goToSurprise);
+    noButton.addEventListener("mouseenter", dodgeNo);
+    noButton.addEventListener("focus", dodgeNo);
+    noButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      dodgeNo();
+      showToast("No is trying its best, but Yes is the only way.");
+    });
+    noButton.addEventListener("touchstart", (event) => {
+      event.preventDefault();
+      dodgeNo();
+    }, { passive: false });
+  </script>
 </body>
 </html>
