@@ -86,6 +86,14 @@
       font-size: clamp(3.2rem, 13vw, 5.5rem);
       line-height: 1;
       user-select: none;
+      overflow: hidden;
+    }
+
+    .mood img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     h1 {
@@ -250,7 +258,9 @@
 <body>
   <main class="screen" id="screen">
     <section class="card" aria-live="polite">
-      <div class="mood" id="mood" role="img" aria-label="Cute hopeful face">♡</div>
+      <div class="mood" id="mood">
+        <img id="moodGif" src="assets/question.gif" alt="Cute hopeful reaction">
+      </div>
       <h1 id="headline">Do you love me?</h1>
       <p id="message">Answer carefully. The birthday surprise is waiting after this.</p>
       <div class="actions" id="actions">
@@ -270,6 +280,16 @@
       dodgesBeforeRelent: 5,
       yesGrowthPerDodge: 1.22,
       yesMaxScale: 2.2,
+      gifs: {
+        question: "assets/question.gif",
+        yes: "assets/yes.gif",
+        no: "assets/no.gif"
+      },
+      alts: {
+        question: "Cute hopeful reaction",
+        yes: "Happy celebrating reaction",
+        no: "Sad reaction"
+      },
       noButtonLabels: [
         "Are you sure?",
         "Think again",
@@ -294,7 +314,7 @@
     };
 
     const screen = document.getElementById("screen");
-    const mood = document.getElementById("mood");
+    const moodGif = document.getElementById("moodGif");
     const headline = document.getElementById("headline");
     const message = document.getElementById("message");
     const yesButton = document.getElementById("yesButton");
@@ -371,14 +391,14 @@
       yesButton.style.setProperty("--yes-scale", state.yesScale);
       noButton.textContent = CONFIG.noButtonLabels[state.dodges - 1] || "No";
       hint.textContent = "The Yes button is getting stronger.";
-      mood.textContent = "♡";
       moveNoButton();
     }
 
     function showGuilt() {
       headline.textContent = CONFIG.guiltScreen.heading;
       message.textContent = CONFIG.guiltScreen.body;
-      mood.textContent = ":'(";
+      moodGif.src = CONFIG.gifs.no;
+      moodGif.alt = CONFIG.alts.no;
       noButton.classList.add("hidden");
       yesButton.textContent = CONFIG.guiltScreen.button;
       yesButton.style.setProperty("--yes-scale", 1.15);
@@ -389,7 +409,8 @@
       screen.classList.add("celebrate");
       headline.textContent = CONFIG.yesScreen.heading;
       message.textContent = CONFIG.yesScreen.body;
-      mood.textContent = "♥";
+      moodGif.src = CONFIG.gifs.yes;
+      moodGif.alt = CONFIG.alts.yes;
       noButton.classList.add("hidden");
       yesButton.textContent = "Open Birthday Surprise";
       yesButton.disabled = true;
@@ -401,6 +422,8 @@
 
     headline.textContent = CONFIG.question;
     yesButton.textContent = CONFIG.yesLabel;
+    moodGif.src = CONFIG.gifs.question;
+    moodGif.alt = CONFIG.alts.question;
     addFloatingHearts();
 
     yesButton.addEventListener("click", goToSurprise);
