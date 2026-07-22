@@ -43,7 +43,7 @@
     const heart = document.createElement("button");
     const roll = Math.random();
     const type = roll > 0.86 ? "broken" : roll > 0.68 ? "gold" : "normal";
-    const size = 44;
+    const size = 56;
     const maxX = Math.max(0, gameArea.clientWidth - size);
     const maxY = Math.max(0, gameArea.clientHeight - size);
 

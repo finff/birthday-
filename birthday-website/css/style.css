@@ -447,33 +447,44 @@ time {
 }
 
 .falling-heart {
+  --heart-fill: var(--rose);
   position: absolute;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 52px;
   border: 0;
   color: #fff;
-  background: var(--rose);
-  border-radius: 50% 50% 48% 52%;
-  transform: rotate(45deg);
-  box-shadow: 0 12px 24px rgba(255, 143, 171, 0.35);
+  background: transparent;
+  border-radius: 50%;
+  filter: drop-shadow(0 12px 12px rgba(255, 143, 171, 0.28));
   animation: popIn 0.2s ease, heartPulse 0.9s ease infinite;
 }
 
 .falling-heart::before {
   content: attr(data-label);
-  transform: rotate(-45deg);
-  font-size: 1.35rem;
+  position: relative;
+  z-index: 1;
+  font-size: 1.05rem;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(45, 58, 90, 0.22);
+}
+
+.falling-heart::after {
+  content: "♥";
+  position: absolute;
+  inset: -8px 0 0;
+  color: var(--heart-fill);
+  font-size: 4rem;
+  line-height: 1;
 }
 
 .falling-heart.gold {
-  background: var(--light-gold);
+  --heart-fill: var(--light-gold);
 }
 
 .falling-heart.broken {
-  background: #73839e;
+  --heart-fill: #73839e;
 }
 
 .game-actions {
