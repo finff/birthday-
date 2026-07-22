@@ -1062,6 +1062,10 @@ time {
 }
 
 @media (max-width: 680px) {
+  body {
+    padding-bottom: calc(8rem + env(safe-area-inset-bottom));
+  }
+
   .opening-screen {
     align-items: start;
     overflow-y: auto;
@@ -1095,11 +1099,43 @@ time {
     margin-left: 0;
   }
 
+  .final-section {
+    padding-bottom: calc(10rem + env(safe-area-inset-bottom));
+  }
+
+  .final-card {
+    margin-bottom: 2.5rem;
+  }
+
+  .final-reveal {
+    padding-bottom: 1.25rem;
+  }
+
+  .final-reveal .secondary-button {
+    margin-bottom: 1.5rem;
+  }
+
   .music-controls {
-    left: 1rem;
-    right: 1rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: calc(0.65rem + env(safe-area-inset-bottom));
     justify-content: center;
     flex-wrap: wrap;
+    padding: 0.35rem;
+  }
+
+  .music-controls button {
+    min-height: 32px;
+    padding: 0.4rem 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  .music-controls span {
+    font-size: 0.72rem;
+  }
+
+  .music-controls input {
+    width: 58px;
   }
 
   .modal {
