@@ -808,6 +808,7 @@ time {
   background: rgba(255, 249, 251, 0.9);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  animation: musicPanelIn 1.8s ease 0.8s both;
 }
 
 .music-controls button {
@@ -1047,6 +1048,17 @@ time {
   to {
     transform: translate(var(--dx), var(--dy));
     opacity: 0;
+  }
+}
+
+@keyframes musicPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
