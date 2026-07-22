@@ -802,21 +802,27 @@ time {
   z-index: 15;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
   max-width: calc(100vw - 2rem);
-  padding: 0.55rem;
+  padding: 0.4rem;
   background: rgba(255, 249, 251, 0.9);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
-.music-controls span {
+.music-controls button {
+  min-height: 34px;
+  padding: 0.45rem 0.65rem;
   font-size: 0.85rem;
+}
+
+.music-controls span {
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
 .music-controls input {
-  width: 82px;
+  width: 68px;
 }
 
 .modal {
