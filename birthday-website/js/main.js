@@ -102,7 +102,7 @@
     const secretMessage = document.getElementById("secretMessage");
     if (secretMessage) secretMessage.classList.remove("hidden");
     if (source === "date") {
-      document.getElementById("songDownload")?.classList.remove("hidden");
+      document.getElementById("bandlabLink")?.classList.remove("hidden");
     }
     const text = source === "butterfly"
       ? "The blue butterfly found another little memory."
