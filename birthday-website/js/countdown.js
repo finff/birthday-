@@ -1,6 +1,6 @@
 (function () {
   const birthdayMonth = 6;
-  const birthdayDay = 21;
+  const birthdayDay = 27;
 
   function getNextBirthday() {
     const now = new Date();
