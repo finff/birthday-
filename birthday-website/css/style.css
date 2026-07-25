@@ -520,7 +520,7 @@ time {
   border: 0;
   border-radius: var(--radius);
   box-shadow: 0 10px 20px rgba(45, 58, 90, 0.12);
-  font-size: clamp(1.4rem, 6vw, 2.2rem);
+  font-size: clamp(1.1rem, 4.8vw, 1.75rem);
   font-weight: 700;
   line-height: 1;
   overflow-wrap: anywhere;
@@ -1121,7 +1121,7 @@ time {
   }
 
   .match-card {
-    font-size: clamp(1.1rem, 9vw, 1.75rem);
+    font-size: clamp(0.95rem, 7.2vw, 1.45rem);
   }
 
   .timeline-item,
