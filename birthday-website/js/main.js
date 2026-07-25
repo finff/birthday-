@@ -101,11 +101,25 @@
   function showSecret(source) {
     const secretMessage = document.getElementById("secretMessage");
     if (secretMessage) secretMessage.classList.remove("hidden");
+    if (source === "date") {
+      document.getElementById("songDownload")?.classList.remove("hidden");
+    }
     const text = source === "butterfly"
       ? "The blue butterfly found another little memory."
+      : source === "date"
+        ? "You unlocked a special song gift."
       : "You found a hidden message! Loving you is filled with beautiful moments waiting to be discovered.";
     window.birthdayAnimations?.showToast(text);
     window.birthdayAnimations?.confetti(36);
+  }
+
+  function isSpecialDate(value) {
+    const normalized = value.trim().toLowerCase().replaceAll("-", "/").replace(/\s+/g, " ");
+    return [
+      "23/05/2025",
+      "23/5/2025",
+      "23 may 2025"
+    ].includes(normalized);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -180,8 +194,7 @@
     });
 
     document.getElementById("secretDate")?.addEventListener("input", (event) => {
-      const normalized = event.target.value.trim().replaceAll("-", "/");
-      if (normalized === "21/07" || normalized === "21/7") {
+      if (isSpecialDate(event.target.value)) {
         showSecret("date");
       }
     });

@@ -782,6 +782,19 @@ time {
   font-weight: 700;
 }
 
+.download-surprise {
+  display: block;
+  width: fit-content;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1.1rem;
+  color: var(--navy-blue);
+  background: linear-gradient(135deg, var(--light-gold), #ffe7a7);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 24px rgba(45, 58, 90, 0.12);
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .final-section {
   min-height: 70svh;
   display: grid;
