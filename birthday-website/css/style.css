@@ -815,6 +815,10 @@ time {
   text-align: center;
 }
 
+.final-card h2 {
+  color: var(--light-gold);
+}
+
 .final-section.starry {
   color: var(--soft-white);
   background: radial-gradient(circle at 20% 30%, rgba(246, 213, 138, 0.3), transparent 20%), #1c2541;
