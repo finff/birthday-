@@ -104,9 +104,7 @@
     if (source === "date") {
       document.getElementById("bandlabLink")?.classList.remove("hidden");
     }
-    const text = source === "butterfly"
-      ? "The blue butterfly found another little memory."
-      : source === "date"
+    const text = source === "date"
         ? "You unlocked a special song gift."
       : "You found a hidden message! Loving you is filled with beautiful moments waiting to be discovered.";
     window.birthdayAnimations?.showToast(text);

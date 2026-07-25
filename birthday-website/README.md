@@ -18,6 +18,6 @@ Open `index.html` in a browser. No build step is required.
 - Opening gift animation and birthday countdown.
 - Music controls with play, pause, mute, and volume.
 - Hero section, animated gallery modal, love cards, and typing messages.
-- Catch My Love game with score, timer, golden hearts, broken hearts, high score, and reward.
+- Catch My Love game with score, timer, golden hearts, broken hearts, and high score.
 - Memory matching game, birthday letter, cake interaction, timeline, hidden secrets, confetti, fireworks, and final surprise.
 - Responsive layout, keyboard support, focus states, semantic sections, alt/ARIA labels, and reduced-motion support.

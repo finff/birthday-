@@ -16,13 +16,6 @@
     if (element) element.textContent = value;
   }
 
-  function scoreMessage(finalScore) {
-    if (finalScore <= 5) return "You may have missed some hearts, but you will never miss a place in mine.";
-    if (finalScore <= 12) return "You caught so much love! But I still have more love waiting for you.";
-    if (finalScore <= 20) return "Amazing! You caught almost all my love.";
-    return "You caught every piece of my heart. It has always belonged to you anyway.";
-  }
-
   function endGame() {
     window.clearInterval(gameTimer);
     window.clearInterval(spawnTimer);
@@ -31,8 +24,6 @@
     document.querySelectorAll(".falling-heart").forEach((heart) => heart.remove());
     highScore = Math.max(highScore, score);
     setText("highScore", highScore);
-    setText("resultMessage", scoreMessage(score));
-    document.getElementById("gameReward")?.classList.remove("hidden");
     window.birthdayAnimations?.confetti(90);
   }
 
@@ -72,7 +63,6 @@
     timeLeft = gameLength;
     setText("score", score);
     setText("timeLeft", timeLeft);
-    document.getElementById("gameReward")?.classList.add("hidden");
     document.querySelectorAll(".falling-heart").forEach((heart) => heart.remove());
 
     spawnTimer = window.setInterval(spawnHeart, 620);

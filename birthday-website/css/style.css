@@ -309,7 +309,6 @@ p {
 
 .photo-placeholder,
 .memory-photo,
-.reward-photo,
 .modal-photo {
   display: grid;
   place-items: center;
@@ -502,18 +501,6 @@ time {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1rem;
-}
-
-.reward {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.66);
-  border-radius: var(--radius);
-}
-
-.reward-photo {
-  min-height: 170px;
-  margin-bottom: 1rem;
 }
 
 .match-board {
@@ -735,25 +722,11 @@ time {
   gap: 1rem;
 }
 
-.secret-heart,
-.secret-star,
-.butterfly {
+.secret-star {
   width: 48px;
   height: 48px;
   border: 0;
   background: transparent;
-}
-
-.secret-heart::before {
-  content: "heart";
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  color: #fff;
-  background: var(--rose);
-  border-radius: 50%;
-  font-size: 0.7rem;
 }
 
 .secret-star {
@@ -766,18 +739,6 @@ time {
   content: "*";
   color: var(--light-gold);
   font-size: 3rem;
-}
-
-.butterfly::before {
-  content: "B";
-  display: grid;
-  place-items: center;
-  color: var(--navy-blue);
-  width: 48px;
-  height: 48px;
-  background: var(--baby-blue);
-  border-radius: 50%;
-  animation: floatSoft 3s ease-in-out infinite;
 }
 
 .date-unlock {
