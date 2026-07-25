@@ -524,6 +524,10 @@ time {
 
 .match-card {
   aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 0.4rem;
   color: var(--navy-blue);
   background: var(--baby-blue);
   border: 0;
@@ -531,6 +535,9 @@ time {
   box-shadow: 0 10px 20px rgba(45, 58, 90, 0.12);
   font-size: clamp(1.4rem, 6vw, 2.2rem);
   font-weight: 700;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .match-card.matched,
@@ -1146,6 +1153,14 @@ time {
 
   .photo-placeholder {
     min-height: 260px;
+  }
+
+  .match-board {
+    gap: 0.55rem;
+  }
+
+  .match-card {
+    font-size: clamp(1.1rem, 9vw, 1.75rem);
   }
 
   .timeline-item,
