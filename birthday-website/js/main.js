@@ -42,7 +42,7 @@
     const modalPhoto = document.getElementById("modalPhoto");
     if (!modalPhoto) return;
     modalPhoto.className = `modal-photo ${memoryClasses[galleryIndex]}`;
-    modalPhoto.textContent = `Memory ${galleryIndex + 1} photo placeholder`;
+    modalPhoto.textContent = "";
   }
 
   function openGallery(index) {

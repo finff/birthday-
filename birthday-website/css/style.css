@@ -318,9 +318,15 @@ p {
   background:
     linear-gradient(135deg, rgba(189, 224, 254, 0.78), rgba(255, 200, 221, 0.75)),
     repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.5) 0 12px, transparent 12px 24px);
+  background-position: center;
+  background-size: cover;
   border-radius: var(--radius);
   text-align: center;
   font-weight: 700;
+}
+
+.photo-placeholder {
+  background-image: url("../assets/images/favourite%20photos.jpg");
 }
 
 .hero-photo figcaption {
@@ -374,16 +380,20 @@ p {
   min-height: 220px;
 }
 
+.memory-one {
+  background-image: url("../assets/images/the%20day%20made%20me%20smile.jpg");
+}
+
 .memory-two {
-  background-color: var(--lavender);
+  background-image: url("../assets/images/favoirite%20moment%20with%20you.jpg");
 }
 
 .memory-three {
-  background-color: var(--mint);
+  background-image: url("../assets/images/memory%20i%20will%20always%20keep%20close.jpg");
 }
 
 .memory-four {
-  background-color: var(--light-gold);
+  background-image: url("../assets/images/every%20picture%20with%20you.jpg");
 }
 
 .date,
